@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/plan/index",
+    "pages/index/index",
+    "pages/activity_detail/activity_detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f00",
+    "navigationBarTitleText": "分享管理系统",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/plan/index",
+        "text": "计划中"
+      },
+      {
+        "pagePath": "pages/plan/index",
+        "text": "已完成"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的"
+      }
+    ],
+    "selectedColor": "#f00",
+    "color": "#000"
+  }
+}
