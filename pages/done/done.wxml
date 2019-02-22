@@ -1,5 +1,6 @@
+<!--pages/done/done.wxml-->
 <!--pages/plan/index.wxml-->
-<block wx:for='{{planActivities}}'>
+<block wx:for='{{doneActivities}}'>
   <!-- data-*属性在触发事件时获取  -->
   <view class='singleTrade' hover-class='item-press' catchtap='itemOnclick' data-id='{{item._id}}'>
     <image src='/res/default_preview.jpg' class='img' />

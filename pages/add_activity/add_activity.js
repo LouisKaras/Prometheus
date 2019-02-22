@@ -1,47 +1,22 @@
-// pages/home/index.js
-/**
- * 分享的数据结构
- */
-function Activity(_id, title, author, start_date, end_date, modify_date, place) {
-  this._id = _id;
-  this.title = title;
-  this.author = author;
-  this.start_date = start_date;
-  this.end_date = end_date;
-  this.modify_date = modify_date;
-  this.place = place;
-}
-
+// pages/add_activity/add_activity.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    planActivities: []
+
   },
-  itemOnclick: function(e) {
-    //点击计划分享列表项
-    wx.navigateTo({
-      url: '/pages/activity_detail/activity_detail',
-    })
+
+  formSubmit: function(e) {
+    console.log(e);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const db = wx.cloud.database()
-    db.collection('activity').where({
-      is_done: false
-    }).get({
-      success: res => {
-        var planActivities = res.data;
-        this.setData({
-          planActivities: planActivities
-        });
-      }
-    });
+
   },
 
   /**

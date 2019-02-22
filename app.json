@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/plan/index",
-    "pages/index/index",
-    "pages/activity_detail/activity_detail"
+    "pages/activity_detail/activity_detail",
+    "pages/done/done",
+    "pages/my/my",
+    "pages/add_activity/add_activity"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,15 +18,15 @@
         "text": "计划中"
       },
       {
-        "pagePath": "pages/plan/index",
+        "pagePath": "pages/done/done",
         "text": "已完成"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/my/my",
         "text": "我的"
       }
     ],
-    "selectedColor": "#f00",
-    "color": "#000"
+    "selectedColor": "#e64340",
+    "color": "#888888"
   }
 }
