@@ -6,8 +6,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f00",
-    "navigationBarTitleText": "分享管理系统",
+    "navigationBarBackgroundColor": "#e64340",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

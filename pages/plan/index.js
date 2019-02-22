@@ -2,11 +2,13 @@
 /**
  * 分享的数据结构
  */
-function Activity(id, title, author, date, place) {
-  this.id = id;
+function Activity(_id, title, author, start_date, end_date, modify_date, place) {
+  this._id = _id;
   this.title = title;
   this.author = author;
-  this.date = date;
+  this.start_date = start_date;
+  this.end_date = end_date;
+  this.modify_date = modify_date;
   this.place = place;
 }
 
@@ -29,13 +31,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var planActivities = new Array();
-    var a1 = new Activity(1, "单元测试", "楼明俊", "20190222", "8楼tesla");
-    planActivities[0] = a1;
-    var a2 = new Activity(2, "python爬虫原理及实践", "楼颜城", "20190227", "8楼tesla");
-    planActivities[1] = a2;
-    this.setData({
-      planActivities: planActivities
+    const db = wx.cloud.database()
+    db.collection('activity').get({
+      success: res => {
+        var planActivities = res.data;
+        this.setData({
+          planActivities: planActivities
+        });
+      }
     });
   },
 
