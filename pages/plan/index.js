@@ -1,4 +1,6 @@
 // pages/home/index.js
+const db = wx.cloud.database()
+
 /**
  * 分享的数据结构
  */
@@ -10,6 +12,18 @@ function Activity(_id, title, author, start_date, end_date, modify_date, place) 
   this.end_date = end_date;
   this.modify_date = modify_date;
   this.place = place;
+}
+
+function requestActivities(callback) {
+  db.collection('activity').where({
+    is_done: false
+  }).get({
+    success: res => {
+      if (callback) {
+        callback(res);
+      }
+    }
+  });
 }
 
 Page({
@@ -31,16 +45,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const db = wx.cloud.database()
-    db.collection('activity').where({
-      is_done: false
-    }).get({
-      success: res => {
-        var planActivities = res.data;
-        this.setData({
-          planActivities: planActivities
-        });
-      }
+    requestActivities(res => {
+      var planActivities = res.data;
+      this.setData({
+        planActivities: planActivities
+      });
     });
   },
 
@@ -76,7 +85,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    requestActivities(res => {
+      var planActivities = res.data;
+      this.setData({
+        planActivities: planActivities
+      });
+      wx.stopPullDownRefresh();
+    });
   },
 
   /**
