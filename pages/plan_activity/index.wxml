@@ -3,8 +3,8 @@
   <!-- data-*属性在触发事件时获取  -->
   <view class='item_container' hover-class='item-press' catchtap='itemOnclick' data-id='{{item._id}}'>
     <view class='container1'>
-      <image class="img" wx:if="{{item.img}}" src='{{item.img}}'/>
-      <image class="img" wx:else src='/res/default_preview.jpg'/>
+      <image class="img" wx:if="{{item.img}}" src='{{item.img}}' />
+      <image class="img" wx:else src='/res/default_preview.jpg' />
       <view class="container2">
         <text class='title'>{{item.title}}</text>
         <text class='author_name'>分享人: {{item.author_name}}</text>

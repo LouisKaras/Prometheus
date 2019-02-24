@@ -1,14 +1,18 @@
 <!--pages/my_activity/my_activity.wxml-->
-<block wx:for='{{myActivities}}'>
-  <!-- data-*属性在触发事件时获取  -->
-  <view class='singleTrade' hover-class='item-press' data-id='{{item._id}}'>
-    <image src='/res/default_preview.jpg' class='img' />
-    <view class='title'>{{item.title}}</view>
-    <view class='author'>{{item.author}}</view>
-    <view class='date'>{{item.start_date}}</view>
-    <view class='place'>{{item.place}}</view>
-    <image src="http://qr.liantu.com/api.php?text={{item._id}}"/>
-    <button bindtap='setActivityDone' data-id='{{item._id}}'>已完成该次分享</button>
+<block wx:for='{{myActivities}}' wx:key='{{item._id}}'>
+  <view class='item_container'>
+    <view class='container1'>
+      <image class="img" wx:if="{{item.img}}" src='{{item.img}}' />
+      <image class="img" wx:else src='/res/default_preview.jpg' />
+      <view class="container2">
+        <text class='title'>{{item.title}}</text>
+        <text class='author_name'>分享人: {{item.author_name}}</text>
+        <text class='place'>地点: {{item.place}}</text>
+        <text class='start_time'>开始时间: {{item.start_date}} {{item.start_time}}</text>
+      </view>
+    </view>
+    <image class='qr' src="http://qr.liantu.com/api.php?text={{item._id}}" />
+    <button bindtap='setActivityDone' data-id='{{item._id}}'>已完成</button>
     <button bindtap="delActivity" data-id='{{item._id}}'>删除</button>
   </view>
 </block>
