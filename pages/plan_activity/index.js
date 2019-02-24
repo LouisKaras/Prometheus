@@ -4,13 +4,15 @@ const db = wx.cloud.database()
 /**
  * 分享的数据结构
  */
-function Activity(_id, title, author, start_date, end_date, modify_date, place) {
+function Activity(_id, title, ps, author_name, start_date, start_time, end_date, end_time, place) {
   this._id = _id;
   this.title = title;
-  this.author = author;
+  this.ps = ps;
+  this.author_name = author_name;
   this.start_date = start_date;
+  this.start_time = start_time;
   this.end_date = end_date;
-  this.modify_date = modify_date;
+  this.end_time = end_time;
   this.place = place;
 }
 

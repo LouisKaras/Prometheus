@@ -48,6 +48,7 @@ Page({
     db.collection('activity').add({
       data: {
         title: param.title,
+        ps: param.ps,
         start_date: param.sdate,
         start_time: param.stime,
         end_date: param.edate,

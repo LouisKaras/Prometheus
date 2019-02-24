@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/plan/index",
+    "pages/plan_activity/index",
     "pages/activity_detail/activity_detail",
     "pages/done/done",
     "pages/my/my",
-    "pages/add_activity/add_activity"
+    "pages/add_activity/add_activity",
+    "pages/my_activity/my_activity",
+    "pages/joined_activity/joined_activity"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,7 +16,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/plan/index",
+        "pagePath": "pages/plan_activity/index",
         "text": "计划中"
       },
       {

@@ -4,8 +4,9 @@
   <view class='singleTrade' hover-class='item-press' catchtap='itemOnclick' data-id='{{item._id}}'>
     <image src='/res/default_preview.jpg' class='img' />
     <view class='title'>{{item.title}}</view>
-    <view class='author'>{{item.author}}</view>
-    <view class='date'>{{item.start_date}}</view>
-    <view class='place'>{{item.place}}</view>
+    <view class='author_name'>分享人： {{item.author_name}}</view>
+    <view class='start_time'>开始时间： {{item.start_date}} {{item.start_time}}</view>
+    <view class='end_time'>结束时间： {{item.end_date}} {{item.end_time}}</view>
+    <view class='place'>地点： {{item.place}}</view>
   </view>
 </block>

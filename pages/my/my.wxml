@@ -9,5 +9,7 @@
   </view>
 
   <button bindtap='addActivity'>新建分享</button>
-  <button>我的分享</button>
+  <button bindtap='gotoMyActivity'>我的分享</button>
+  <button bindtap='gotoJoinedActivity'>参加的分享</button>
+  <button bindtap='register'>签到</button>
 </view>

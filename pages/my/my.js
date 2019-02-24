@@ -7,11 +7,30 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+
   addActivity: function() {
     wx.navigateTo({
       url: '/pages/add_activity/add_activity'
     })
   },
+
+  gotoMyActivity: function() {
+    wx.navigateTo({
+      url: '/pages/my_activity/my_activity',
+    })
+  },
+
+  /**
+   * 扫二维码签到
+   */
+  register: function() {
+    wx.scanCode({
+      success: res => {
+        console.log(res);
+      }
+    });
+  },
+
   onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({

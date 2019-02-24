@@ -1,0 +1,14 @@
+<!--pages/my_activity/my_activity.wxml-->
+<block wx:for='{{myActivities}}'>
+  <!-- data-*属性在触发事件时获取  -->
+  <view class='singleTrade' hover-class='item-press' data-id='{{item._id}}'>
+    <image src='/res/default_preview.jpg' class='img' />
+    <view class='title'>{{item.title}}</view>
+    <view class='author'>{{item.author}}</view>
+    <view class='date'>{{item.start_date}}</view>
+    <view class='place'>{{item.place}}</view>
+    <image src="http://qr.liantu.com/api.php?text={{item._id}}"/>
+    <button bindtap='setActivityDone' data-id='{{item._id}}'>已完成该次分享</button>
+    <button bindtap="delActivity" data-id='{{item._id}}'>删除</button>
+  </view>
+</block>
