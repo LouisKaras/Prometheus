@@ -1,10 +1,10 @@
 <!--pages/done/done.wxml-->
-<block wx:for='{{doneActivities}}'>
+<block wx:for='{{doneActivities}}' wx:key="{{item._id}}">
   <!-- data-*属性在触发事件时获取  -->
   <view class='singleTrade' hover-class='item-press' catchtap='itemOnclick' data-id='{{item._id}}'>
     <image src='/res/default_preview.jpg' class='img' />
     <view class='title'>{{item.title}}</view>
-    <view class='author'>{{item.author}}</view>
+    <view class='author'>{{item.author_name}}</view>
     <view class='date'>{{item.start_date}}</view>
     <view class='place'>{{item.place}}</view>
   </view>

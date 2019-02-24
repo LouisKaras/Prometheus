@@ -1,2 +1,9 @@
 <!--pages/joined_activity/joined_activity.wxml-->
-<text>pages/joined_activity/joined_activity.wxml</text>
+<block wx:for='{{joinedActivities}}' wx:key='{{item._id}}'>
+  <!-- data-*属性在触发事件时获取  -->
+  <view class='singleTrade' hover-class='item-press' data-id='{{item._id}}'>
+    <image src='/res/default_preview.jpg' class='img' />
+    <view class='title'>{{item.title}}</view>
+    <button>去评分</button>
+  </view>
+</block>

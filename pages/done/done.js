@@ -1,17 +1,4 @@
 // pages/done/done.js
-/**
- * 分享的数据结构
- */
-function Activity(_id, title, author, start_date, end_date, modify_date, place) {
-  this._id = _id;
-  this.title = title;
-  this.author = author;
-  this.start_date = start_date;
-  this.end_date = end_date;
-  this.modify_date = modify_date;
-  this.place = place;
-}
-
 Page({
 
   /**

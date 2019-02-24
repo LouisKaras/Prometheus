@@ -1,5 +1,6 @@
 // pages/my/my.js
-const app = getApp()
+const app = getApp();
+const db = wx.cloud.database();
 
 Page({
   data: {
@@ -20,6 +21,12 @@ Page({
     })
   },
 
+  gotoJoinedActivity: function() {
+    wx.navigateTo({
+      url: '/pages/joined_activity/joined_activity',
+    })
+  },
+
   /**
    * 扫二维码签到
    */
@@ -27,6 +34,18 @@ Page({
     wx.scanCode({
       success: res => {
         console.log(res);
+
+        var activityId = res.result;
+        db.collection('join').add({
+          data: {
+            activity_id: activityId
+          },
+          success(res) {
+            wx.showToast({
+              title: "签到成功"
+            })
+          }
+        });
       }
     });
   },
