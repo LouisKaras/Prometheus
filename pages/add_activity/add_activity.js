@@ -8,9 +8,7 @@ Page({
    */
   data: {
     sdate: "",
-    stime: "",
-    edate: "",
-    etime: ""
+    stime: ""
   },
 
   bindSDateChange(e) {
@@ -25,21 +23,9 @@ Page({
     })
   },
 
-  bindEDateChange(e) {
-    this.setData({
-      edate: e.detail.value
-    })
-  },
-
-  bindETimeChange(e) {
-    this.setData({
-      etime: e.detail.value
-    })
-  },
-
-/**
- * 提交分享
- */
+  /**
+   * 提交分享
+   */
   formSubmit: function(e) {
     var param = e.detail.value;
     var userInfo = app.globalData.userInfo
@@ -51,23 +37,20 @@ Page({
         ps: param.ps,
         start_date: param.sdate,
         start_time: param.stime,
-        end_date: param.edate,
-        end_time: param.etime,
         place: param.place,
         author_name: userInfo.nickName,
+        img: "", // TODO 封面功能
         is_done: false
       },
       success(res) {
         wx.showToast({
-          title: "添加成功",
-          icon: "success",
-          duration: 1000
+          title: "添加成功"
         })
         setTimeout(() => {
           wx.navigateBack({
             delta: 1
           })
-        }, 1200);
+        }, 1500);
       }
     })
   },
@@ -76,7 +59,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
 
   /**
