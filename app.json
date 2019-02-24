@@ -2,7 +2,7 @@
   "pages": [
     "pages/plan_activity/index",
     "pages/activity_detail/activity_detail",
-    "pages/done/done",
+    "pages/done_activity/done_activity",
     "pages/my/my",
     "pages/add_activity/add_activity",
     "pages/my_activity/my_activity",
@@ -20,7 +20,7 @@
         "text": "计划中"
       },
       {
-        "pagePath": "pages/done/done",
+        "pagePath": "pages/done_activity/done_activity",
         "text": "已完成"
       },
       {

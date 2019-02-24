@@ -1,5 +1,6 @@
-<!--pages/my_activity/my_activity.wxml-->
-<block wx:for='{{myActivities}}' wx:key='{{item._id}}'>
+<!--pages/done/done.wxml-->
+<block wx:for='{{doneActivities}}' wx:key='{{item._id}}'>
+  <!-- data-*属性在触发事件时获取  -->
   <view class='item_container'>
     <view class='container1'>
       <image class="img" wx:if="{{item.img}}" src='{{item.img}}' />
@@ -11,8 +12,5 @@
         <text class='start_time'>开始时间: {{item.start_date}} {{item.start_time}}</text>
       </view>
     </view>
-    <image class='qr' src="http://qr.liantu.com/api.php?text={{item._id}}" />
-    <button class='btn' wx:if="{{!item.is_done}}" type="primary" bindtap='setActivityDone' data-id='{{item._id}}'>已完成</button>
-    <button class='btn' wx:if="{{!item.is_done}}" type="warn" bindtap="delActivity" data-id='{{item._id}}'>删除</button>
   </view>
 </block>

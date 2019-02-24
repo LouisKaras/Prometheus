@@ -3,19 +3,6 @@
 const app = getApp();
 const db = wx.cloud.database();
 
-/**
- * 分享的数据结构
- */
-function Activity(_id, title, author, start_date, end_date, modify_date, place) {
-  this._id = _id;
-  this.title = title;
-  this.author = author;
-  this.start_date = start_date;
-  this.end_date = end_date;
-  this.modify_date = modify_date;
-  this.place = place;
-}
-
 Page({
 
   /**
@@ -29,7 +16,16 @@ Page({
    * 完成指定分享
    */
   setActivityDone(e) {
-      // todo
+    var activityId = e.target.dataset.id;
+    console.log(activityId);
+    db.collection("activity").doc(activityId).update({
+      data: {
+        is_done: true
+      },
+      success: res => {
+        console.log(res);
+      }
+    });
   },
 
   /**
@@ -41,8 +37,7 @@ Page({
     db.collection("activity").doc(activityId).remove({
       success: res => {
         wx.showToast({
-          title: '删除成功',
-          icon: "success"
+          title: '删除成功'
         })
 
         // 重新刷新页面
@@ -82,54 +77,5 @@ Page({
         });
       }
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })
