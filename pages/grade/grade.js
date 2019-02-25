@@ -1,5 +1,4 @@
-// pages/joined_activity/joined_activity.js
-const app = getApp();
+// pages/grade/grade.js
 const db = wx.cloud.database();
 
 Page({
@@ -8,16 +7,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    joinedActivities: new Array()
+    activityId: ""
   },
 
-  /**
-   * 去评价
-   */
-  gotoGrade: function(e) {
-    var activityId = e.target.dataset.id;
-    wx.navigateTo({
-      url: '/pages/grade/grade?id=' + activityId,
+  formSubmit: function(e) {
+    var param = e.detail.value;
+
+    db.collection('join').where({
+      activity_id: this.data.activityId
+    }).get({
+      success(res) {
+        db.collection('join').doc(res.data[0]._id).update({
+          data: {
+            score: param.score,
+            feedback: param.feedback
+          },
+          success: res => {
+            wx.showToast({
+              title: '评价完成！',
+            })
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1500);
+          }
+        })
+      }
     })
   },
 
@@ -25,25 +41,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var joinedAs = new Array();
-    db.collection('join').where({
-      _openid: app.globalData.openid
-    }).get({
-      success: res => {
-        res.data.forEach((value) => {
-          db.collection('activity').where({
-            _id: value.activity_id
-          }).get({
-            success: res => {
-              joinedAs.push(res.data[0]);
-              this.setData({
-                joinedActivities: joinedAs
-              })
-            }
-          })
-        });
-      }
-    });
+    var activityId = options.id;
+    this.setData({
+      activityId: activityId
+    })
   },
 
   /**

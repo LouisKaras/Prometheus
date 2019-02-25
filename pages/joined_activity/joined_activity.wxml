@@ -11,6 +11,6 @@
         <text class='start_time'>开始时间: {{item.start_date}} {{item.start_time}}</text>
       </view>
     </view>
-    <button>去评分</button>
+    <button bindtap='gotoGrade' data-id='{{item._id}}'>去评价</button>
   </view>
 </block>

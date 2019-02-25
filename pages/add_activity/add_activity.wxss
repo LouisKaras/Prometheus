@@ -1,1 +1,19 @@
 /* pages/add_activity/add_activity.wxss */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx;
+}
+
+.ps {
+  margin-top: 10rpx;
+}
+
+.place {
+  margin-top: 20rpx;
+}
+
+.btn {
+  margin-top: 20rpx;
+}

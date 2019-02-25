@@ -6,7 +6,8 @@
     "pages/my/my",
     "pages/add_activity/add_activity",
     "pages/my_activity/my_activity",
-    "pages/joined_activity/joined_activity"
+    "pages/joined_activity/joined_activity",
+    "pages/grade/grade"
   ],
   "window": {
     "backgroundTextStyle": "light",

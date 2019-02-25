@@ -1,8 +1,8 @@
 <!--pages/add_activity/add_activity.wxml-->
-<form bindsubmit="formSubmit">
+<form class='form' bindsubmit="formSubmit">
 
   <input name="title" placeholder="输入分享主题" />
-  <textarea name="ps" placeholder="简述分享主题，针对受众以及预期目的" />
+  <textarea class='ps' name="ps" placeholder="简述分享主题，针对受众以及预期目的" />
 
 
   <picker mode="date" value="{{sdate}}" start="2019-01-01" bindchange="bindSDateChange">
@@ -19,9 +19,7 @@
     <input name="stime" placeholder="选择开始时间" value='{{stime}}' disabled="true" />
   </picker>
 
-  <input name="place" placeholder="输入分享地点" />
+  <input class='place' name="place" placeholder="输入分享地点" />
 
-  <view class="btn-area">
-    <button form-type="submit" type="primary">提交</button>
-  </view>
+  <button class="btn" form-type="submit" type="primary">提交</button>
 </form>
