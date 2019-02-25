@@ -1,5 +1,5 @@
 // pages/activity_detail/activity_detail.js
-const db = wx.cloud.database();
+const app = getApp();
 
 Page({
 
@@ -14,15 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var activityId = options.id;
-    db.collection('activity').doc(activityId).get({
-      success: res => {
-        console.log(res);
-        this.setData({
-          activity: res.data
-        })
-      }
-    });
+    this.setData({
+      activity: app.globalData.selectedPlanActivity
+    })
   },
 
   /**

@@ -1,5 +1,6 @@
 // pages/home/index.js
-const db = wx.cloud.database()
+const app = getApp();
+const db = wx.cloud.database();
 
 function requestActivities(callback) {
   db.collection('activity').where({
@@ -22,10 +23,11 @@ Page({
     planActivities: []
   },
   itemOnclick: function(e) {
-    var activityId = e.currentTarget.dataset.id;
+    var activity = e.currentTarget.dataset.item;
+    app.globalData.selectedPlanActivity = activity;
     //点击计划分享列表项，跳转到详情
     wx.navigateTo({
-      url: '/pages/activity_detail/activity_detail?id=' + activityId,
+      url: '/pages/activity_detail/activity_detail',
     })
   },
 
