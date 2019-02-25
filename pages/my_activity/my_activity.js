@@ -68,7 +68,7 @@ Page({
    */
   onLoad: function(options) {
     db.collection('activity').where({
-      _openid: app.globalData._openid
+      _openid: app.globalData.openid
     }).get({
       success: res => {
         var myActivities = res.data;

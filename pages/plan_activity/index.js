@@ -22,9 +22,10 @@ Page({
     planActivities: []
   },
   itemOnclick: function(e) {
-    //点击计划分享列表项
+    var activityId = e.currentTarget.dataset.id;
+    //点击计划分享列表项，跳转到详情
     wx.navigateTo({
-      url: '/pages/activity_detail/activity_detail',
+      url: '/pages/activity_detail/activity_detail?id=' + activityId,
     })
   },
 

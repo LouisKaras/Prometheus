@@ -9,19 +9,19 @@
     <view class="picker">
       开始日期:
     </view>
-    <input name="sdate" placeholder="选择开始日期" value='{{sdate}}' disabled="true"/>
+    <input name="sdate" placeholder="选择开始日期" value='{{sdate}}' disabled="true" />
   </picker>
 
   <picker mode="time" value="{{stime}}" start="18:30" bindchange="bindSTimeChange">
     <view class="picker">
       开始时间:
     </view>
-    <input name="stime" placeholder="选择开始时间" value='{{stime}}' disabled="true"/>
+    <input name="stime" placeholder="选择开始时间" value='{{stime}}' disabled="true" />
   </picker>
 
   <input name="place" placeholder="输入分享地点" />
 
   <view class="btn-area">
-    <button form-type="submit">提交</button>
+    <button form-type="submit" type="primary">提交</button>
   </view>
 </form>
