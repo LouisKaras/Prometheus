@@ -3,6 +3,23 @@
 const app = getApp();
 const db = wx.cloud.database();
 
+/**
+ * 刷新页面数据
+ * 重新读取数据库
+ */
+function refreshPageData(callback) {
+  db.collection('activity').where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res => {
+      var myActivities = res.data;
+      callback.setData({
+        myActivities: myActivities
+      });
+    }
+  });
+}
+
 Page({
 
   /**
@@ -23,7 +40,7 @@ Page({
         is_done: true
       },
       success: res => {
-        console.log(res);
+        refreshPageData(this);
       }
     });
   },
@@ -41,16 +58,7 @@ Page({
         })
 
         // 重新刷新页面
-        db.collection('activity').where({
-          _openid: app.globalData._openid
-        }).get({
-          success: res => {
-            var myActivities = res.data;
-            this.setData({
-              myActivities: myActivities
-            });
-          }
-        });
+        refreshPageData(this);
       },
       fail: err => {
         console.log(err);
@@ -67,15 +75,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    db.collection('activity').where({
-      _openid: app.globalData.openid
-    }).get({
-      success: res => {
-        var myActivities = res.data;
-        this.setData({
-          myActivities: myActivities
-        });
-      }
-    });
+    refreshPageData(this);
   }
 })
