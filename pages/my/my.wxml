@@ -7,7 +7,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <button class="btn_function" bindtap='addActivity'>新建分享</button>
       <button class="btn_function" bindtap='gotoMyActivity'>我的分享</button>
-      <button class="btn_function" bindtap='gotoJoinedActivity'>参加的分享</button>
+      <button id="btn_joinedActivity" class="btn_function" bindtap='gotoJoinedActivity'>参加的分享</button>
       <button class="btn_function" bindtap='register'>签到</button>
     </block>
   </view>

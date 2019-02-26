@@ -8,7 +8,8 @@ Page({
    */
   data: {
     sdate: "",
-    stime: ""
+    stime: "",
+    fileID: ""
   },
 
   bindSDateChange(e) {
@@ -20,6 +21,30 @@ Page({
   bindSTimeChange(e) {
     this.setData({
       stime: e.detail.value
+    })
+  },
+
+  /**
+   * 上传封面
+   */
+  uploadPic() {
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000;
+    var picName = timestamp + '.png';
+
+    wx.chooseImage({
+      success: chooseResult => {
+        // 将图片上传至云存储空间
+        wx.cloud.uploadFile({
+          cloudPath: picName,
+          filePath: chooseResult.tempFilePaths[0],
+          success: res => {
+            this.setData({
+              fileID: res.fileID
+            })
+          },
+        })
+      },
     })
   },
 
@@ -39,7 +64,7 @@ Page({
         start_time: param.stime,
         place: param.place,
         author_name: userInfo.nickName,
-        img: "", // TODO 封面功能
+        img: this.data.fileID,
         is_done: false
       },
       success(res) {
@@ -59,55 +84,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
 
   }
 })

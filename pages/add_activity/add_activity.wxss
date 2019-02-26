@@ -12,6 +12,7 @@
 
 .place {
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .btn {

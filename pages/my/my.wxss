@@ -19,5 +19,10 @@
 
 .btn_function {
   width: 100%;
-  margin-top: 20rpx;
+  margin-top: 5rpx;
+}
+
+#btn_joinedActivity {
+  width: 100%;
+  margin-top: 50rpx;
 }

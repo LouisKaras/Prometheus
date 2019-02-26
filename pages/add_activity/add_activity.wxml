@@ -4,7 +4,6 @@
   <input name="title" placeholder="输入分享主题" />
   <textarea class='ps' name="ps" placeholder="简述分享主题，针对受众以及预期目的" />
 
-
   <picker mode="date" value="{{sdate}}" start="2019-01-01" bindchange="bindSDateChange">
     <view class="picker">
       开始日期:
@@ -21,5 +20,8 @@
 
   <input class='place' name="place" placeholder="输入分享地点" />
 
+  <image src='{{fileID}}'></image>
+  <button bindtap='uploadPic'>上传封面</button>
   <button class="btn" form-type="submit" type="primary">提交</button>
+
 </form>
