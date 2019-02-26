@@ -7,13 +7,13 @@ const db = wx.cloud.database();
  * 刷新页面数据
  * 重新读取数据库
  */
-function refreshPageData(callback) {
+function refreshPageData(page) {
   db.collection('activity').where({
     _openid: app.globalData.openid
   }).get({
     success: res => {
       var myActivities = res.data;
-      callback.setData({
+      page.setData({
         myActivities: myActivities
       });
     }

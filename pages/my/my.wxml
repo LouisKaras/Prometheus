@@ -1,15 +1,14 @@
 <!--pages/my/my.wxml-->
 <view>
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取用户信息 </button>
     <block wx:else>
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <button class="btn_function" bindtap='addActivity'>新建分享</button>
+      <button class="btn_function" bindtap='gotoMyActivity'>我的分享</button>
+      <button class="btn_function" bindtap='gotoJoinedActivity'>参加的分享</button>
+      <button class="btn_function" bindtap='register'>签到</button>
     </block>
   </view>
-
-  <button bindtap='addActivity'>新建分享</button>
-  <button bindtap='gotoMyActivity'>我的分享</button>
-  <button bindtap='gotoJoinedActivity'>参加的分享</button>
-  <button bindtap='register'>签到</button>
 </view>

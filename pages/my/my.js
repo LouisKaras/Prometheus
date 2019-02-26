@@ -17,7 +17,7 @@ Page({
 
   gotoMyActivity: function() {
     wx.navigateTo({
-      url: '/pages/my_activity/my_activity',
+      url: '/pages/my/my_activity',
     })
   },
 

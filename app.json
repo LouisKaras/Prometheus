@@ -1,23 +1,23 @@
 {
   "pages": [
-    "pages/plan_activity/index",
+    "pages/todo_activity/todo_activity",
     "pages/activity_detail/activity_detail",
     "pages/done_activity/done_activity",
     "pages/my/my",
     "pages/add_activity/add_activity",
-    "pages/my_activity/my_activity",
+    "pages/my/my_activity",
     "pages/joined_activity/joined_activity",
     "pages/grade/grade"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#e64340",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/plan_activity/index",
+        "pagePath": "pages/todo_activity/todo_activity",
         "text": "计划中"
       },
       {
