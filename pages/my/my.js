@@ -50,6 +50,15 @@ Page({
     });
   },
 
+  /**
+   * 跳转意见反馈
+   */
+  feedback: function() {
+    wx.navigateTo({
+      url: '/pages/my/feedback',
+    })
+  },
+
   onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({
