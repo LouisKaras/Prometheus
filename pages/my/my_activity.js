@@ -12,12 +12,37 @@ function refreshPageData(page) {
     _openid: app.globalData.openid
   }).get({
     success: res => {
-      var myActivities = res.data;
+      var activities = parseData(res.data);
       page.setData({
-        myActivities: myActivities
+        myActivities: activities
       });
     }
   });
+}
+
+function parseData(data) {
+  var activities = [];
+  var attends = [];
+  data.forEach(value => {
+    if (value.type == 'activity') { // 分享
+      activities.push(value);
+    } else if (value.type == 'attend') { // 参与记录
+      attends.push(value);
+    }
+  });
+
+  var i = 0;
+  var j = 0;
+  for (i = 0; i < attends.length; i++) {
+    for (j = 0; j < activities.length; j++) {
+      if (attends[i].activity_id == activities[j]._id) {
+        activities[j].attends = attends[i];
+        break;
+      }
+    }
+  }
+
+  return activities;
 }
 
 Page({
@@ -27,6 +52,15 @@ Page({
    */
   data: {
     myActivities: []
+  },
+
+  onItemclick(e) {
+    var activity = e.currentTarget.dataset.item;
+    app.globalData.selectedMyActivity = activity;
+    //点击计划分享列表项，跳转到详情
+    wx.navigateTo({
+      url: '/pages/my/my_activity_detail',
+    })
   },
 
   /**

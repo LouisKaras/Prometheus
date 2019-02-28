@@ -65,7 +65,8 @@ Page({
         place: param.place,
         author_name: userInfo.nickName,
         img: this.data.fileID,
-        is_done: false
+        is_done: false,
+        type: "activity"
       },
       success(res) {
         wx.showToast({

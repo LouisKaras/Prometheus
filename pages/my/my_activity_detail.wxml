@@ -1,0 +1,11 @@
+<!--pages/my/my_activity_detail.wxml-->
+<view class='item_container'>
+  <image class="img" wx:if="{{activity.img}}" src='{{activity.img}}' />
+  <image class="img" wx:else src='/res/default_preview.jpg' />
+  <text class='title'>{{activity.title}}</text>
+  <text class='ps'>{{activity.ps}}</text>
+  <text class='author_name'>分享人: {{activity.author_name}}</text>
+  <text class='place'>地点: {{activity.place}}</text>
+  <text class='start_time'>开始时间: {{activity.start_date}} {{activity.start_time}}</text>
+  <image class='qr' src="http://qr.liantu.com/api.php?text={{activity._id}}" />
+</view>

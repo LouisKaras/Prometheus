@@ -54,6 +54,7 @@ App({
   globalData: {
     userInfo: null,
     openid: null,
-    selectedPlanActivity: null
+    selectedTodoActivity: null,
+    selectedMyActivity: null
   }
 })

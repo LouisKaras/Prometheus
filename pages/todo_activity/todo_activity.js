@@ -7,17 +7,40 @@ const db = wx.cloud.database();
  * 刷新页面数据
  */
 function refreshPageData(page, callback) {
-  db.collection('activity').where({
-    is_done: false
-  }).get({
+  db.collection('activity').get({
     success: res => {
-      var planActivities = res.data;
+      var activities = parseData(res.data);
       page.setData({
-        planActivities: planActivities
+        planActivities: activities
       });
       callback.onFinish();
     }
   });
+}
+
+function parseData(data) {
+  var activities = [];
+  var attends = [];
+  data.forEach(value => {
+    if (value.type == 'activity') { // 分享
+      activities.push(value);
+    } else if (value.type == 'attend') { // 参与记录
+      attends.push(value);
+    }
+  });
+
+  var i = 0;
+  var j = 0;
+  for (i = 0; i < attends.length; i++) {
+    for (j = 0; j < activities.length; j++) {
+      if (attends[i].activity_id == activities[j]._id) {
+        activities[j].attends = attends[i];
+        break;
+      }
+    }
+  }
+
+  return activities;
 }
 
 Page({
@@ -31,7 +54,7 @@ Page({
 
   itemOnclick: function(e) {
     var activity = e.currentTarget.dataset.item;
-    app.globalData.selectedPlanActivity = activity;
+    app.globalData.selectedTodoActivity = activity;
     //点击计划分享列表项，跳转到详情
     wx.navigateTo({
       url: '/pages/activity_detail/activity_detail',

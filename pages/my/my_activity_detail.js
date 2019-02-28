@@ -1,11 +1,7 @@
-// pages/activity_detail/activity_detail.js
 const app = getApp();
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     activity: null
   },
@@ -15,7 +11,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      activity: app.globalData.selectedTodoActivity
+      activity: app.globalData.selectedMyActivity
     })
   },
 
