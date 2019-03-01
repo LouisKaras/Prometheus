@@ -1,5 +1,5 @@
-<!--pages/joined_activity/joined_activity.wxml-->
-<block wx:for='{{joinedActivities}}' wx:key='{{item._id}}'>
+<!--pages/my/attend_activity.wxml-->
+<block wx:for='{{activities}}' wx:key='{{item._id}}'>
   <view class='item_container'>
     <view class='container1'>
       <image class="img" wx:if="{{item.img}}" src='{{item.img}}' />
@@ -11,6 +11,6 @@
         <text class='start_time'>开始时间: {{item.start_date}} {{item.start_time}}</text>
       </view>
     </view>
-    <button wx:if="{{!item.score}}" id="btn_grade" bindtap='gotoGrade' data-id='{{item._id}}' type="primary">去评价</button>
+    <button wx:if="{{!item.attends.score}}" id="btn_grade" bindtap='gotoGrade' data-id='{{item.attends._id}}' type="primary">去评价</button>
   </view>
 </block>

@@ -8,9 +8,7 @@ const db = wx.cloud.database();
  * 重新读取数据库
  */
 function refreshPageData(page) {
-  db.collection('activity').where({
-    _openid: app.globalData.openid
-  }).get({
+  db.collection('activity').get({
     success: res => {
       var activities = parseData(res.data);
       page.setData({
@@ -36,7 +34,10 @@ function parseData(data) {
   for (i = 0; i < attends.length; i++) {
     for (j = 0; j < activities.length; j++) {
       if (attends[i].activity_id == activities[j]._id) {
-        activities[j].attends = attends[i];
+        if (!activities[j].attends) {
+          activities[j].attends = [];
+        }
+        activities[j].attends.push(attends[i]);
         break;
       }
     }

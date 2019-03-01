@@ -6,10 +6,10 @@
     "pages/my/my",
     "pages/add_activity/add_activity",
     "pages/my/my_activity",
-    "pages/joined_activity/joined_activity",
     "pages/grade/grade",
     "pages/my/feedback",
-    "pages/my/my_activity_detail"
+    "pages/my/my_activity_detail",
+    "pages/my/attend_activity"
   ],
   "window": {
     "backgroundTextStyle": "light",

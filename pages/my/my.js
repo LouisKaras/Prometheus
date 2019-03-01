@@ -23,7 +23,7 @@ Page({
 
   gotoJoinedActivity: function() {
     wx.navigateTo({
-      url: '/pages/joined_activity/joined_activity',
+      url: '/pages/my/attend_activity',
     })
   },
 
@@ -36,9 +36,10 @@ Page({
         console.log(res);
 
         var activityId = res.result;
-        db.collection('join').add({
+        db.collection('activity').add({
           data: {
-            activity_id: activityId
+            activity_id: activityId,
+            type: "attend"
           },
           success(res) {
             wx.showToast({
