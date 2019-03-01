@@ -1,5 +1,3 @@
-// pages/my_activity/my_activity.js
-
 const app = getApp();
 const db = wx.cloud.database();
 
@@ -69,7 +67,6 @@ Page({
    */
   setActivityDone(e) {
     var activityId = e.target.dataset.id;
-    console.log(activityId);
     db.collection("activity").doc(activityId).update({
       data: {
         is_done: true
@@ -85,7 +82,6 @@ Page({
    */
   delActivity(e) {
     var activityId = e.target.dataset.id;
-    console.log(activityId);
     db.collection("activity").doc(activityId).remove({
       success: res => {
         wx.showToast({

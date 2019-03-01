@@ -1,7 +1,7 @@
 <!--pages/my_activity/my_activity.wxml-->
 <block wx:for='{{myActivities}}' wx:key='{{item._id}}'>
-  <view class='item_container' hover-class='item-press' bindtap='onItemclick' data-item='{{item}}'>
-    <view class='container1'>
+  <view class='item_container'>
+    <view class='container1' hover-class='item-press' bindtap='onItemclick' data-item='{{item}}'>
       <image class="img" wx:if="{{item.img}}" src='{{item.img}}' />
       <image class="img" wx:else src='/res/default_preview.jpg' />
       <view class="container2">
