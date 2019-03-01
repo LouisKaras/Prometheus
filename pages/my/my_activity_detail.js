@@ -12,13 +12,19 @@ Page({
    */
   onLoad: function(options) {
     var activtiy = app.globalData.selectedMyActivity;
-    var totalScore = 0;
-    activtiy.attends.forEach(value => {
-      totalScore += parseInt(value.score);
-    })
+    var average_score = 0;
+
+    if (activtiy.attends) {
+      var totalScore = 0;
+      activtiy.attends.forEach(value => {
+        totalScore += parseInt(value.score);
+      })
+      average_score = totalScore / activtiy.attends.length;
+    }
+
     this.setData({
       activity: activtiy,
-      average_score: totalScore / activtiy.attends.length
+      average_score: average_score
     })
   }
 })

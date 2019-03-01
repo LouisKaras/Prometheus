@@ -1,5 +1,3 @@
-// pages/home/index.js
-
 const app = getApp();
 const db = wx.cloud.database();
 
@@ -23,7 +21,9 @@ function parseData(data) {
   var attends = [];
   data.forEach(value => {
     if (value.type == 'activity') { // 分享
-      activities.push(value);
+      if (!value.is_done) {
+        activities.push(value);
+      }
     } else if (value.type == 'attend') { // 参与记录
       attends.push(value);
     }
@@ -42,7 +42,6 @@ function parseData(data) {
       }
     }
   }
-
   return activities;
 }
 
@@ -68,7 +67,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    refreshPageData(this)
+    refreshPageData(this);
   },
 
   /**

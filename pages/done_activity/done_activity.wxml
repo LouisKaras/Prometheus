@@ -1,6 +1,6 @@
 <!--pages/done/done.wxml-->
-<block wx:if="{{doneActivities.length>1}}">
-  <block wx:for='{{doneActivities}}' wx:key='{{item._id}}'>
+<block wx:if="{{activities.length>0}}">
+  <block wx:for='{{activities}}' wx:key='{{item._id}}'>
     <!-- data-*属性在触发事件时获取  -->
     <view class='item_container'>
       <view class='container1'>
@@ -16,4 +16,4 @@
     </view>
   </block>
 </block>
-<view class="no_data" wx:else>暂无数据</view>
+<view class="no_data" wx:else>暂无完成的分享</view>

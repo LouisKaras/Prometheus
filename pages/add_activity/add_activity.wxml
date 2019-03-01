@@ -20,7 +20,9 @@
 
   <input class='place' name="place" placeholder="输入分享地点" />
 
-  <image src='{{fileID}}'></image>
+  <block wx:if="{{fileID}}">
+    <image src='{{fileID}}'></image>
+  </block>
   <button bindtap='uploadPic'>上传封面</button>
   <button class="btn" form-type="submit" type="primary">提交</button>
 

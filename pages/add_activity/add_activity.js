@@ -1,5 +1,32 @@
-// pages/add_activity/add_activity.js
-const app = getApp()
+const app = getApp();
+const db = wx.cloud.database();
+
+/**
+ * 校验数据是否正确
+ */
+function checkParamValidate(param) {
+  var errorMsg;
+  if (!param.title) {
+    errorMsg = '请填写标题';
+  } else if (!param.ps) {
+    errorMsg = '请填写简述';
+  } else if (!param.sdate) {
+    errorMsg = '请选择开始日期';
+  } else if (!param.stime) {
+    errorMsg = '请选择开始时间';
+  } else if (!param.place) {
+    errorMsg = '请填写分享地点';
+  }
+
+  if (errorMsg) {
+    wx.showToast({
+      title: errorMsg,
+      icon: "none"
+    })
+    return false;
+  }
+  return true;
+}
 
 Page({
 
@@ -54,37 +81,31 @@ Page({
   formSubmit: function(e) {
     var param = e.detail.value;
     var userInfo = app.globalData.userInfo
-    const db = wx.cloud.database();
 
-    db.collection('activity').add({
-      data: {
-        title: param.title,
-        ps: param.ps,
-        start_date: param.sdate,
-        start_time: param.stime,
-        place: param.place,
-        author_name: userInfo.nickName,
-        img: this.data.fileID,
-        is_done: false,
-        type: "activity"
-      },
-      success(res) {
-        wx.showToast({
-          title: "添加成功"
-        })
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1
+    if (checkParamValidate(param)) {
+      db.collection('activity').add({
+        data: {
+          title: param.title,
+          ps: param.ps,
+          start_date: param.sdate,
+          start_time: param.stime,
+          place: param.place,
+          author_name: userInfo.nickName,
+          img: this.data.fileID,
+          is_done: false,
+          type: "activity"
+        },
+        success(res) {
+          wx.showToast({
+            title: "添加成功"
           })
-        }, 1500);
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1500);
+        }
+      })
+    }
   }
 })

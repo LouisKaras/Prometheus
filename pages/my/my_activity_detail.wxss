@@ -18,10 +18,9 @@
   font-size: 28rpx;
 }
 
-.author_name {
+.score {
   color: #888;
   font-size: 28rpx;
-  margin-top: 10rpx;
 }
 
 .start_time {
