@@ -31,7 +31,7 @@ function parseData(data) {
   var i = 0;
   var j = 0;
   for (i = 0; i < attends.length; i++) {
-    if (attends[i]._openid == app.globalData.openid) { // 本人参与的
+    if (attends[i]._openid == app.globalData.openid) { // 我参与的
       for (j = 0; j < activities.length; j++) {
         if (attends[i].activity_id == activities[j]._id) {
           activities[j].attends = attends[i];

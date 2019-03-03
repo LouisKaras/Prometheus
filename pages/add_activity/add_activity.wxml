@@ -1,7 +1,7 @@
 <!--pages/add_activity/add_activity.wxml-->
 <form class='form' bindsubmit="formSubmit">
 
-  <input name="title" placeholder="输入分享主题" />
+  <input name="title" placeholder="分享主题" />
   <textarea class='ps' name="ps" placeholder="简述分享主题，针对受众以及预期目的" />
 
   <picker mode="date" value="{{sdate}}" start="2019-01-01" bindchange="bindSDateChange">

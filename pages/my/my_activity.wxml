@@ -11,7 +11,9 @@
         <text class='start_time'>开始时间: {{item.start_date}} {{item.start_time}}</text>
       </view>
     </view>
-    <button class='btn' wx:if="{{!item.is_done}}" type="primary" bindtap='setActivityDone' data-id='{{item._id}}'>已完成</button>
-    <button class='btn' wx:if="{{!item.is_done}}" type="warn" bindtap="delActivity" data-id='{{item._id}}'>删除</button>
+    <view class='container3'>
+      <button class='btn' wx:if="{{!item.is_done}}" type="warn" bindtap="delActivity" data-id='{{item._id}}'>删除</button>
+      <button class='btn' wx:if="{{!item.is_done}}" type="primary" bindtap='setActivityDone' data-id='{{item._id}}'>已完成</button>
+    </view>
   </view>
 </block>

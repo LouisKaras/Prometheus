@@ -21,7 +21,10 @@ function parseData(data) {
   var attends = [];
   data.forEach(value => {
     if (value.type == 'activity') { // 分享
-      activities.push(value);
+      if (value._openid == app.globalData.openid) { // 我创建的
+        activities.push(value);
+      }
+
     } else if (value.type == 'attend') { // 参与记录
       attends.push(value);
     }
