@@ -1,34 +1,36 @@
-// pages/my/feedback.js
+const util = require("../../utils/util.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isBtnClicked: false
   },
 
   /**
    * 提交意见
    */
   formSubmit: function(e) {
-    var param = e.detail.value;
-    const db = wx.cloud.database();
-    db.collection('feedback').add({
-      data: {
-        content: param.content
-      },
-      success(res) {
-        wx.showToast({
-          title: "感谢您的反馈"
-        })
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1
+    util.buttonClicked(this, () => {
+      var param = e.detail.value;
+      const db = wx.cloud.database();
+      db.collection('feedback').add({
+        data: {
+          content: param.content
+        },
+        success(res) {
+          wx.showToast({
+            title: "感谢您的反馈"
           })
-        }, 1500);
-      }
-    })
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1500);
+        }
+      })
+    }, 2000)
   },
 
   /**

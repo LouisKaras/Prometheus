@@ -1,19 +1,29 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+/**
+ * 该方法可防止按钮被快速重复点击
+ * 需要在页面的data对象中增加isBtnClicked
+ */
+function buttonClicked(page, callback, delay) {
+  if (!page.data.isBtnClicked) {
+    page.setData({
+      isBtnClicked: true
+    });
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
+    if (!delay) {
+      delay = 1500;
+    }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+    setTimeout(function() {
+      page.setData({
+        isBtnClicked: false
+      })
+    }, delay);
+
+    if (callback) {
+      callback();
+    }
+  }
 }
 
 module.exports = {
-  formatTime: formatTime
+  buttonClicked: buttonClicked
 }

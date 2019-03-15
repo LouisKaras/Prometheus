@@ -1,5 +1,6 @@
 const app = getApp();
 const db = wx.cloud.database();
+const util = require("../../utils/util.js");
 
 /**
  * 校验数据是否正确
@@ -34,6 +35,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isBtnClicked: false,
     sdate: "",
     stime: "",
     fileID: ""
@@ -79,33 +81,35 @@ Page({
    * 提交分享
    */
   formSubmit: function(e) {
-    var param = e.detail.value;
-    var userInfo = app.globalData.userInfo
+    util.buttonClicked(this, () => {
+      var param = e.detail.value;
+      var userInfo = app.globalData.userInfo
 
-    if (checkParamValidate(param)) {
-      db.collection('activity').add({
-        data: {
-          title: param.title,
-          ps: param.ps,
-          start_date: param.sdate,
-          start_time: param.stime,
-          place: param.place,
-          author_name: userInfo.nickName,
-          img: this.data.fileID,
-          is_done: false,
-          type: "activity"
-        },
-        success(res) {
-          wx.showToast({
-            title: "添加成功"
-          })
-          setTimeout(() => {
-            wx.navigateBack({
-              delta: 1
+      if (checkParamValidate(param)) {
+        db.collection('activity').add({
+          data: {
+            title: param.title,
+            ps: param.ps,
+            start_date: param.sdate,
+            start_time: param.stime,
+            place: param.place,
+            author_name: userInfo.nickName,
+            img: this.data.fileID,
+            is_done: false,
+            type: "activity"
+          },
+          success(res) {
+            wx.showToast({
+              title: "添加成功"
             })
-          }, 1500);
-        }
-      })
-    }
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1500);
+          }
+        })
+      }
+    });
   }
 })

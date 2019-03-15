@@ -1,4 +1,4 @@
-<!--pages/my/attend_activity.wxml-->
+<block wx:if="{{activities.length>0}}">
 <block wx:for='{{activities}}' wx:key='{{item._id}}'>
   <view class='item_container'>
     <view class='container1'>
@@ -14,3 +14,5 @@
     <button wx:if="{{!item.attends.score}}" id="btn_grade" bindtap='gotoGrade' data-id='{{item.attends._id}}' type="primary">去评价</button>
   </view>
 </block>
+</block>
+<view class="no_data" wx:else>暂无参加的分享</view>
