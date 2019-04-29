@@ -1,12 +1,26 @@
-// pages/my/my.js
 const app = getApp();
 const db = wx.cloud.database();
+
+/** 
+   * 暂时写死一部分用户有创建分享的权限 
+   */
+function judgeCreatePermission() {
+  var openid = app.globalData.openid;
+  return openid == 'ot9Ec5EPJn-Se9YMihEZ9vTK94rE' 
+    || openid == 'ot9Ec5GpRuHnMICZUnQeuD0_34wo'
+    || openid == 'ot9Ec5KGZdaZPqDKCiaNbQ2nOKZY'
+    || openid == 'ot9Ec5Lzjo7tpUOqhiwLxcI8dXB0'
+    || openid == 'ot9Ec5ODjyVr2qOw0jkfgC_R_Eos'
+    || openid == 'ot9Ec5P6nkcbzYB8eFhBJxLUYjZ0'
+    || openid == 'ot9Ec5LPGr1iufSqPFlG6QFrVALE'
+}
 
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    hasCreatePermission: false
   },
 
   addActivity: function() {
@@ -87,7 +101,12 @@ Page({
         }
       })
     }
+
+    this.setData({
+      hasCreatePermission: judgeCreatePermission()
+    })
   },
+
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
